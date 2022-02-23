@@ -1,4 +1,4 @@
-import { HEROKU_URL } from "../constants";
+import { HEROKU_URL } from "../constants.js";
 export const MANGAS_TO_DB = "MANGAS_TO_DB";
 export const GET_ALL_MANGAS = "GET_ALL_MANGAS";
 export const GET_GENRES = "GET_GENRES";
