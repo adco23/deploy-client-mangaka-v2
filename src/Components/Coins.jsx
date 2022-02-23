@@ -107,7 +107,7 @@ export default function Coins() {
         dispatch(getBuyerOrder());
         dispatch(getSellerOrder());
         let getCoins = async () => {
-            let coins = await axios(HEROKU_URLRL + "/profile/coins", { withCredentials: true });
+            let coins = await axios(HEROKU_URL + "/profile/coins", { withCredentials: true });
             console.log(coins.data);
             setCoins(coins.data);
         };
