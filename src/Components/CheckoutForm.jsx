@@ -8,7 +8,7 @@ import { Fragment } from "react";
 import { Button } from "@mui/material";
 import { Input} from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-import { HEROKU_URL } from "../../constants";
+import { HEROKU_URL } from "../constants";
 
 
 

@@ -4,7 +4,7 @@ import { getUser } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import Snackbar, { initialSnack } from "./Snackbar";
 import axios from "axios";
-import { HEROKU_URL } from "../../constants";
+import { HEROKU_URL } from "../constants";
 //MUI
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
