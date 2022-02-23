@@ -24,6 +24,7 @@ import About from "./Components/Configuration/About";
 import IndexProfile from "./Components/Configuration/IndexProfile";
 import CheckoutForm from './Components/CheckoutForm';
 import GoogleUsername from "./Components/Configuration/GoogleUsername";
+import { HEROKU_URL } from "./constants";
 
 const axios = require("axios");
 
@@ -33,7 +34,7 @@ function App() {
   const user = useSelector((state) => state.user);
   //YA HAY UN ACTION CREATOR getUser ;)
   const handleButton = () => {
-    let current = axios.get("http://localhost:3001/api/users/currentUser", {withCredentials: true,});
+    let current = axios.get(HEROKU_URL + "/users/currentUser", {withCredentials: true,});
     console.log("current");
     console.log(current);
     console.log("   ")

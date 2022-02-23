@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { HEROKU_URL } from "../../constants";
 export function useForm(initialForm, validation) {
 	let navigate = useNavigate();
 	const [form, setForm] = useState(initialForm);
@@ -28,7 +29,7 @@ export function useForm(initialForm, validation) {
 		console.log(form);
 		try {
 			const request = await axios.post(
-				"http://localhost:3001/api/users/register",
+				HEROKU_URL + "/users/register",
 				formData
 			);
 			const response = await request.data.msg;

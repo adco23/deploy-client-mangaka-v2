@@ -3,6 +3,7 @@ import axios from "axios";
 import { getUser } from "../../Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbar, {initialSnack} from './Snackbar';
+import { HEROKU_URL } from "../../constants";
 //MUI
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
@@ -53,7 +54,7 @@ function Profile(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/profile/", { withCredentials: true })
+      .get(HEROKU_URL + "/profile/", { withCredentials: true })
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error));
   }, []);
@@ -70,7 +71,7 @@ function Profile(props) {
     formData.append("avatar", e.target.files[0]);
     setSnack(initialSnack);
     axios
-      .put("http://localhost:3001/api/profile/updateAvatar", formData, {
+      .put(HEROKU_URL + "/profile/updateAvatar", formData, {
         withCredentials: true,
       })
       .then((res) => {

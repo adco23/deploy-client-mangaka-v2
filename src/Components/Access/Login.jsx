@@ -21,6 +21,7 @@ import Divider from "@mui/material/Divider";
 import GoogleIcon from "@mui/icons-material/Google";
 //import FacebookIcon from "@mui/icons-material/Facebook";
 import Stack from "@mui/material/Stack";
+import { HEROKU_URL } from "../../constants";
 
 const AccessButton = styled(Button)({
 	width: "47%",
@@ -70,7 +71,7 @@ export default function Login({ handleClose }) {
 	};
 	//inicio de sesión con google (redireccionamiento)
 	const googleLogin = () => {
-		window.open("http://localhost:3001/api/auth/google", "_self");
+		window.open(HEROKU_URL + "/auth/google", "_self");
 	};
 	//control de los input
 	const handleChange = (e) => {
@@ -83,7 +84,7 @@ export default function Login({ handleClose }) {
 		setSnack(initialSnack);
 		if (form.username && form.password) {
 			axios
-				.post(`http://localhost:3001/api/auth/local/login`, form, {
+				.post(HEROKU_URL + `/auth/local/login`, form, {
 					headers: {
 						"Content-Type": "application/json",
 					},

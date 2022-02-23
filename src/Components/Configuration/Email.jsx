@@ -15,6 +15,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { HEROKU_URL } from "../../constants";
 
 //css
 import "animate.css";
@@ -46,7 +47,7 @@ const Email = () => {
 		setSnack(initialSnack);
 		if (regEmail.test(form.newEmail)) {
 			axios
-				.put("http://localhost:3001/api/profile/updateEmail", form, {
+				.put(HEROKU_URL + "/profile/updateEmail", form, {
 					withCredentials: true,
 				})
 

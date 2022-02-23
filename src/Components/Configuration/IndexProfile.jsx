@@ -4,6 +4,7 @@ import { getUser } from "../../Actions/index";
 import { Link } from "react-router-dom";
 import Snackbar, { initialSnack } from "./Snackbar";
 import axios from "axios";
+import { HEROKU_URL } from "../../constants";
 //MUI
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -27,7 +28,7 @@ const IndexProfile = () => {
 		if (checked) {
 			axios
 				.put(
-					"http://localhost:3001/api/profile/creator",
+					HEROKU_URL + "/profile/creator",
 					{ creatorMode: checked },
 					{
 						withCredentials: true,

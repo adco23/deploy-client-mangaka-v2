@@ -8,6 +8,7 @@ import { Fragment } from "react";
 import { Button } from "@mui/material";
 import { Input} from "@mui/material";
 import { useNavigate } from 'react-router-dom';
+import { HEROKU_URL } from "../../constants";
 
 
 
@@ -21,7 +22,7 @@ export default function CheckoutForm() {
     const navigate = useNavigate()
 
     useEffect( () =>{
-      axios.get("http://localhost:3001/api/profile/coins",{withCredentials:true})
+      axios.get(HEROKU_URL + "/profile/coins",{withCredentials:true})
       .then(data => {setCoins(data.data.coins);
       if(!flag ){
       setFlag(true)
@@ -48,7 +49,7 @@ export default function CheckoutForm() {
         return alert('cbu incorrecto')
       }
       console.log(input,'inputhandle')
-      axios.post('http://localhost:3001/api/coins/sell',input,{withCredentials:true})
+      axios.post(HEROKU_URL + '/coins/sell',input,{withCredentials:true})
       setInput ({cbu:'',value:0,name:''})
     
       navigate('/')

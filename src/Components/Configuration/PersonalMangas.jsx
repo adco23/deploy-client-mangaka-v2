@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { HEROKU_URL } from "../../constants";
 //MUI
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import Accordion from "@mui/material/Accordion";
@@ -20,7 +21,7 @@ export default function PersonalMangas() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/profile/", { withCredentials: true })
+      .get(HEROKU_URL + "/profile/", { withCredentials: true })
       .then((res) => {
         console.log(res.data);
         setMangas(res.data.mangasCreated);

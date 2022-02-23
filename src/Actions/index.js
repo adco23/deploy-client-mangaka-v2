@@ -1,3 +1,4 @@
+import { HEROKU_URL } from "../constants";
 export const MANGAS_TO_DB = "MANGAS_TO_DB";
 export const GET_ALL_MANGAS = "GET_ALL_MANGAS";
 export const GET_GENRES = "GET_GENRES";
@@ -52,7 +53,7 @@ export let mangasToDb = () => {
     return async (dispatch) => {
         try {
             let mangas = await axios.get(
-                "http://localhost:3001/api/mangas/allMangas"
+                HEROKU_URL + "/mangas/allMangas"
             );
             return dispatch({
                 type: MANGAS_TO_DB,
@@ -68,7 +69,7 @@ export let getAllMangas = () => {
     return async (dispatch) => {
         try {
             let allMangas = await axios.get(
-                `http://localhost:3001/api/mangas/directory`
+                HEROKU_URL + `/mangas/directory`
             );
             return dispatch({
                 type: GET_ALL_MANGAS,
@@ -84,7 +85,7 @@ export let getGenres = () => {
     return async (dispatch) => {
         try {
             let allGenres = await axios.get(
-                `http://localhost:3001/api/mangas/listOfGenres`
+                HEROKU_URL + `/mangas/listOfGenres`
             );
             return dispatch({
                 type: GET_GENRES,
@@ -100,7 +101,7 @@ export let getRecentMangas = () => {
     return async (dispatch) => {
         try {
             let allMangas = await axios.get(
-                `http://localhost:3001/api/mangas/recentMangas`
+                HEROKU_URL + `/mangas/recentMangas`
             );
             return dispatch({
                 type: RECENT_MANGAS,
@@ -116,7 +117,7 @@ export let getMangaDetail = (payload) => {
     return async (dispatch) => {
         try {
             let mangaDetail = await axios.get(
-                `http://localhost:3001/api/mangas/manga/${payload}`
+                HEROKU_URL + `/mangas/manga/${payload}`
             );
             return dispatch({
                 type: GET_DETAIL,
@@ -133,7 +134,7 @@ export let postManga = (payload) => {
         try {
             console.log(payload);
             let manga = await axios.post(
-                `http://localhost:3001/api/mangas`,
+                HEROKU_URL + `/mangas`,
                 payload,
                 { withCredentials: true }
             );
@@ -164,7 +165,7 @@ export let filterMangasByAuthor = (payload) => {
     return async (dispatch) => {
         try {
             let filteredMangas = await axios.get(
-                `http://localhost:3001/api/mangas/byAuthor?author=${payload}`
+                HEROKU_URL + `/mangas/byAuthor?author=${payload}`
             );
             return dispatch({
                 type: FILTRO_AUTOR,
@@ -193,7 +194,7 @@ export let searchManga = (payload) => {
     return async (dispatch) => {
         try {
             let search = await axios.get(
-                `http://localhost:3001/api/mangas/Search?title=${payload}`
+                HEROKU_URL + `/mangas/Search?title=${payload}`
             );
             return dispatch({
                 type: SEARCH_MANGA,
@@ -209,7 +210,7 @@ export let getMangasPreview = () => {
     return async (dispatch) => {
         try {
             let search = await axios.get(
-                "http://localhost:3001/api/mangas/Search?title="
+                HEROKU_URL + "/mangas/Search?title="
             );
             return dispatch({
                 type: GET_MANGAS_PREVIEW,
@@ -224,7 +225,7 @@ export let paginado = ({ page, genre, order }) => {
     return async (dispatch) => {
         try {
             let mangas = await axios.get(
-                `http://localhost:3001/api/mangas/directory?page=${page}&filter=${
+                HEROKU_URL + `/mangas/directory?page=${page}&filter=${
                     genre ? genre : ""
                 }&order=${order ? order : "asc"}&tags=title`
             );
@@ -243,7 +244,7 @@ export let postChapters = (payload) => {
         try {
             console.log(payload);
             let chapters = await axios.post(
-                `http://localhost:3001/api/chapters`,
+                HEROKU_URL + `/chapters`,
                 payload,
                 { withCredentials: true }
             );
@@ -276,7 +277,7 @@ export let getWishList = (payload) => {
     return async (dispatch) => {
         try {
             let mangas = await axios.get(
-                `http://localhost:3001/api/profile/wishlist`,
+                HEROKU_URL + `/profile/wishlist`,
                 { withCredentials: true }
             );
             return dispatch({
@@ -296,7 +297,7 @@ export let getCurrentUser = (form) => {
     /*return async (dispatch) => {
         try {
             const request = await axios.post(
-                `http://localhost:3001/api/auth/local/login`,
+                HEROKU_URL + `/auth/local/login`,
                 form,
                 {
                     headers: {
@@ -337,7 +338,7 @@ export const UserLogout = () => {
             const request = await axios({
                 method: "GET",
                 withCredentials: true,
-                url: "http://localhost:3001/api/auth/logout",
+                url: HEROKU_URL + "/auth/logout",
             });
             const response = await request.data;
             console.log(response);
@@ -357,7 +358,7 @@ export const getUser = () => {
     return async (dispatch) => {
         try {
             const request = await axios.get(
-                "http://localhost:3001/api/users/currentUser",
+                HEROKU_URL + "/users/currentUser",
                 { withCredentials: true }
             );
             const response = await request.data;
@@ -379,7 +380,7 @@ export const getGoogleUser = () => {
             const request = await axios({
                 method: "GET",
                 withCredentials: true,
-                url: "http://localhost:3001/api/auth/google/response",
+                url: HEROKU_URL + "/auth/google/response",
             });
             const response = await request.data;
             if (response.msg === "usuario no logueado") {
@@ -404,7 +405,7 @@ export let getChapters = (payload) => {
     return async (dispatch) => {
         try {
             let allChapters = await axios.get(
-                `http://localhost:3001/api/chapters/chapter/getchapter/${payload} `
+                HEROKU_URL + `/chapters/chapter/getchapter/${payload} `
             );
             return dispatch({
                 type: GET_ALL_CHAPTERS,
@@ -420,7 +421,7 @@ export let getUserInfo = (payload) => {
     return async (dispatch) => {
         try {
             let user = await axios.get(
-                `http://localhost:3001/api/users/user/${payload}`
+                HEROKU_URL + `/users/user/${payload}`
             );
             return dispatch({
                 type: GET_USER_INFO,
@@ -437,7 +438,7 @@ export let getMangaDetailLibrary = (payload) => {
     return async (dispatch) => {
         try {
             let mangaDetail = await axios.get(
-                `http://localhost:3001/api/mangas/manga/${payload}`
+                HEROKU_URL + `/mangas/manga/${payload}`
             );
             return dispatch({
                 type: GET_DETAIL_LIBRARY,
@@ -453,7 +454,7 @@ export let getPopularMangas = () => {
     return async (dispatch) => {
         try {
             let mangas = await axios.get(
-                "http://localhost:3001/api/mangas/popularMangas"
+                HEROKU_URL + "/mangas/popularMangas"
             );
             return dispatch({
                 type: GET_POPULAR_MANGAS,
@@ -469,7 +470,7 @@ export let popularAuthors = () => {
     return async (dispatch) => {
         try {
             let authors = await axios.get(
-                "http://localhost:3001/api/users/popularAuthors"
+                HEROKU_URL + "/users/popularAuthors"
             );
             return dispatch({
                 type: GET_POPULAR_AUTHORS,
@@ -496,7 +497,7 @@ export let changeShow = () => {
 export let getAllUsers = () => {
     return async (dispatch) => {
         try {
-            let users = await axios.get("http://localhost:3001/api/users");
+            let users = await axios.get(HEROKU_URL + "/users");
             return dispatch({
                 type: GET_USERS,
                 payload: users.data,
@@ -513,7 +514,7 @@ export let setActive = (payload) => {
             console.log(payload);
             let body = {};
             let setActive = await axios.put(
-                `http://localhost:3001/api/users/user/setActive/${payload}`,
+                HEROKU_URL + `/users/user/setActive/${payload}`,
                 body,
                 { withCredentials: true }
             );
@@ -533,7 +534,7 @@ export let setActiveManga = (payload) => {
             console.log(payload);
             let body = {};
             let setActiveManga = await axios.put(
-                `http://localhost:3001/api/mangas/manga/setActive/${payload}`,
+                HEROKU_URL + `/mangas/manga/setActive/${payload}`,
                 body,
                 { withCredentials: true }
             );
@@ -553,7 +554,7 @@ export let setAdmin = (payload) => {
             console.log(payload);
             let body = {};
             let setAdmin = await axios.put(
-                `http://localhost:3001/api/users/user/setAdmin/${payload}`,
+                HEROKU_URL + `/users/user/setAdmin/${payload}`,
                 body,
                 { withCredentials: true }
             );
@@ -572,7 +573,7 @@ export let deleteWishlistManga = (payload) => {
         try {
             console.log(payload);
             let manga = axios.put(
-                `http://localhost:3001/api/users/user/lists?list=wishList`,
+                HEROKU_URL + `/users/user/lists?list=wishList`,
                 { mangaId: payload },
                 { withCredentials: true }
             );
@@ -590,7 +591,7 @@ export let addMangaWishList = (payload) => {
         try {
             console.log(payload);
             let manga = axios.put(
-                "http://localhost:3001/api/users/user/lists?list=wishList",
+                HEROKU_URL + "/users/user/lists?list=wishList",
                 payload,
                 { withCredentials: true }
             );
@@ -609,7 +610,7 @@ export let postCheckout = (payload) => {
         try {
             console.log(payload);
             let checkout = await axios.post(
-                `http://localhost:3001/api/coins/sell`,
+                HEROKU_URL + `/coins/sell`,
                 payload,
                 { withCredentials: true }
             );
@@ -627,7 +628,7 @@ export let postCheckout = (payload) => {
 export let getPacks = () => {
     return async (dispatch) => {
         try {
-            let packs = await axios.get("http://localhost:3001/api/coins/pack");
+            let packs = await axios.get(HEROKU_URL + "/coins/pack");
             return dispatch({
                 type: GET_PACKS,
                 payload: packs.data,
@@ -643,7 +644,7 @@ export let buyCoins = (payload) => {
         try {
             console.log(payload);
             let buyCoins = await axios.post(
-                `http://localhost:3001/api/coins/buy`,
+                HEROKU_URL + `/coins/buy`,
                 payload
             );
             return dispatch({
@@ -661,7 +662,7 @@ export let buyCoins = (payload) => {
 //         try {
 //             console.log(payload);
 //             let getPreferenceId = await axios.get(
-//                 `http://localhost:3001/api/coins/buy`
+//                 HEROKU_URL + `/coins/buy`
 //             );
 //             console.log(getPreferenceId)
 //             return dispatch({
@@ -678,7 +679,7 @@ export let getChapter = (payload) => {
     return async (dispatch) => {
         try {
             let getChapter = await axios.get(
-                `http://localhost:3001/api/chapters/chapter/images/${payload}`
+                HEROKU_URL + `/chapters/chapter/images/${payload}`
             );
             return dispatch({
                 type: GET_CHAPTER,
@@ -694,7 +695,7 @@ export let getAuthorDetail = (id) => {
     return async (dispatch) => {
         try {
             let authorDetail = await axios(
-                `http://localhost:3001/api/users/user/${id}`
+                HEROKU_URL + `/users/user/${id}`
             );
             return dispatch({
                 type: "GET_AUTHOR_DETAILS",
@@ -711,7 +712,7 @@ export let favorite = () => {
     return async (dispatch) => {
         try {
             let favorite = await axios.get(
-                `http://localhost:3001/api/profile/favorites`,
+                HEROKU_URL + `/profile/favorites`,
                 { withCredentials: true }
             );
             return dispatch({
@@ -738,7 +739,7 @@ export let getBuyOrders = () => {
     return async (dispatch) => {
         try {
             let getBuyOrders = await axios.get(
-                `http://localhost:3001/api/coins/getBuyOrders`,
+                HEROKU_URL + `/coins/getBuyOrders`,
                 { withCredentials: true }
             );
             return dispatch({
@@ -755,7 +756,7 @@ export let getSellOrders = () => {
     return async (dispatch) => {
         try {
             let getSellOrders = await axios.get(
-                `http://localhost:3001/api/coins/getSellOrders`,
+                HEROKU_URL + `/coins/getSellOrders`,
                 { withCredentials: true }
             );
             return dispatch({
@@ -774,7 +775,7 @@ export let createComment = (payload) => {
         console.log(payload, "pay");
         try {
             const comments = await axios.post(
-                `http://localhost:3001/api/comments/addComent`,
+                HEROKU_URL + `/comments/addComent`,
                 payload,
                 { withCredentials: true }
             );
@@ -795,7 +796,7 @@ export let verComentarios = (id) => {
     return async function (dispatch) {
         try {
             let allComments = await axios.get(
-                `http://localhost:3001/api/comments/getComments/${id}`,
+                HEROKU_URL + `/comments/getComments/${id}`,
                 { withCredentials: true }
             );
             return dispatch({
@@ -813,7 +814,7 @@ export let getPanelMangas = (payload) => {
         try {
             console.log(payload);
             let getPanelMangas = await axios(
-                `http://localhost:3001/api/mangas//panel/allMangas`,
+                HEROKU_URL + `/mangas//panel/allMangas`,
                 { withCredentials: true }
             );
             return dispatch({
@@ -831,7 +832,7 @@ export let buyChapters = (payload) => {
         try {
             console.log(payload);
             let buyChapters = await axios.post(
-                `http://localhost:3001/api/buyChapter/buyChapter`,
+                HEROKU_URL + `/buyChapter/buyChapter`,
                 payload,
                 { withCredentials: true }
             );
@@ -849,7 +850,7 @@ export let getBuyerOrder = () => {
     return async (dispatch) => {
         try {
             let getBuyerOrder = await axios.get(
-                `http://localhost:3001/api/buyChapter/getBuyerOrder`,
+                HEROKU_URL + `/buyChapter/getBuyerOrder`,
                 { withCredentials: true }
             );
             return dispatch({
@@ -866,7 +867,7 @@ export let getSellerOrder = () => {
     return async (dispatch) => {
         try {
             let getSellerOrder = await axios.get(
-                `http://localhost:3001/api/buyChapter/getSellerOrder`,
+                HEROKU_URL + `/buyChapter/getSellerOrder`,
                 { withCredentials: true }
             );
             return dispatch({
