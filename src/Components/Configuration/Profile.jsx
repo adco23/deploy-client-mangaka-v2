@@ -3,7 +3,6 @@ import axios from "axios";
 import { getUser } from "../../Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbar, {initialSnack} from './Snackbar';
-import { HEROKU_URL } from "../../constants.js";
 //MUI
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
@@ -28,6 +27,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 //router
 import { Link, Outlet } from "react-router-dom";
+import { HEROKU_URL } from "../../constants";
 
 const drawerWidth = 240;
 //input file
