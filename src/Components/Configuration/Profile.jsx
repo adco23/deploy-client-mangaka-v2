@@ -3,7 +3,7 @@ import axios from "axios";
 import { getUser } from "../../Actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbar, {initialSnack} from './Snackbar';
-import { HEROKU_URL } from "../constants.js";
+import { HEROKU_URL } from "../../constants.js";
 //MUI
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";

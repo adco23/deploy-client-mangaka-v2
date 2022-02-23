@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { HEROKU_URL } from "../constants.js";
+import { HEROKU_URL } from "../../constants.js";
 export function useForm(initialForm, validation) {
 	let navigate = useNavigate();
 	const [form, setForm] = useState(initialForm);

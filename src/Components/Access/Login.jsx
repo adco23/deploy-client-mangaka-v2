@@ -21,7 +21,7 @@ import Divider from "@mui/material/Divider";
 import GoogleIcon from "@mui/icons-material/Google";
 //import FacebookIcon from "@mui/icons-material/Facebook";
 import Stack from "@mui/material/Stack";
-import { HEROKU_URL } from "../constants.js";
+import { HEROKU_URL } from "../../constants.js";
 
 const AccessButton = styled(Button)({
 	width: "47%",

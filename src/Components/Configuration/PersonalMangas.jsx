@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { HEROKU_URL } from "../constants.js";
+import { HEROKU_URL } from "../../constants.js";
 //MUI
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import Accordion from "@mui/material/Accordion";
