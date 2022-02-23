@@ -11,7 +11,6 @@ import mountain from "../img/mountain.png";
 import tree from "../img/tree.png";
 import flower from "../img/flower.png";
 import mangaka from "../img/mangaka.png";
-import { HEROKU_URL } from "../constants.js";
 import 'animate.css';
 //mui
 import PropTypes from "prop-types";
